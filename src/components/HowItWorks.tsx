@@ -26,7 +26,7 @@ const steps: Step[] = [
 
 function HowItWorks() {
   const headingRef = useReveal<HTMLDivElement>()
-  const gridRef = useReveal<HTMLDivElement>(0.1)
+  const gridRef = useReveal<HTMLOListElement>(0.1)
 
   return (
     <section className="wrapper section steps-section" id="how-it-works">
