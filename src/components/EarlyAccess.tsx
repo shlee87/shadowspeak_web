@@ -108,10 +108,6 @@ function EarlyAccess() {
         )}
 
         <div className="social-proof">
-          <p className="founder-line">
-            Built by an immigrant who spent years hearing &quot;can you say that again?&quot; &mdash;
-            and realized the problem was never pronunciation. It was delivery.
-          </p>
           <p className="efficacy-line">
             Most users reach a 0.85+ speaker match within 3 attempts.
           </p>

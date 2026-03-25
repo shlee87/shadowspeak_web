@@ -17,15 +17,6 @@ function Problem() {
       <div className="problem-grid reveal-stagger" ref={gridRef}>
         <article className="problem-card glass-card intense">
           <span className="problem-index">01</span>
-          <h3>The gap you can hear but not fix</h3>
-          <p>
-            Your accent is part of who you are. The real barrier is delivery — stress, chunking, and pitch that decide whether people follow you.
-            Most tools never show you these, so the gap stays invisible.
-          </p>
-        </article>
-
-        <article className="problem-card glass-card">
-          <span className="problem-index">02</span>
           <h3>The waste of replaying podcasts 10 seconds at a time</h3>
           <p>
             You open a podcast to learn real English, then end up fighting the player because it was never built for sentence-level practice.
@@ -33,7 +24,7 @@ function Problem() {
         </article>
 
         <article className="problem-card glass-card">
-          <span className="problem-index">03</span>
+          <span className="problem-index">02</span>
           <h3>Podcasts are great input. But input alone does not fix output.</h3>
           <p>
             You can listen to hundreds of hours and still not close the gap between how you speak and how they speak.
