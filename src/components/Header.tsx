@@ -8,9 +8,10 @@ function Header() {
           <p className="brand-sub">Podcast delivery practice</p>
         </div>
       </div>
-      <a className="header-cta" href="#early-access">
-        Early access
-      </a>
+      <nav className="header-nav">
+        <a className="header-link" href="/blog">Blog</a>
+        <a className="header-cta" href="#early-access">Early access</a>
+      </nav>
     </header>
   )
 }

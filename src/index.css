@@ -119,7 +119,10 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px 0 0;
+  padding: 14px 0;
+  background: rgba(10, 15, 28, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .brand-mark {
@@ -173,6 +176,24 @@ textarea {
 .ghost-link {
   color: var(--text-soft);
   font-size: 0.95rem;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-link {
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.header-link:hover {
+  color: var(--accent);
 }
 
 .header-cta {
@@ -833,7 +854,6 @@ textarea {
 }
 
 @media (max-width: 860px) {
-  .solution-points,
   .feedback-stack,
   .mock-lower-grid {
     grid-template-columns: 1fr;
@@ -990,6 +1010,12 @@ textarea {
   color: var(--text-soft);
   line-height: 1.55;
   font-size: 0.92rem;
+}
+
+@media (max-width: 860px) {
+  .solution-points {
+    grid-template-columns: 1fr;
+  }
 }
 
 .solution-quote {
@@ -1255,7 +1281,7 @@ textarea {
   }
 
   .section {
-    padding: 72px 0;
+    padding: 48px 0;
   }
 
   .topbar {
@@ -1305,6 +1331,10 @@ textarea {
   .timed-word {
     min-height: 34px;
     border-radius: 12px;
+  }
+
+  .primary-button {
+    width: 100%;
   }
 }
 
@@ -1357,136 +1387,65 @@ textarea {
   margin: 4px 0 0;
 }
 
-/* --- Comparison grid (Phase 3) --- */
+/* --- Differentiator checklist (Phase 3) --- */
 
-.competitor-grid table {
-  width: 100%;
-  border-collapse: collapse;
+.differentiator-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.competitor-head-row {
-  border-bottom: 1px solid var(--white-line);
+.differentiator-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 24px;
 }
 
-.competitor-head {
-  padding: 18px 20px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 700;
-  line-height: 1.3;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  text-align: left;
-  vertical-align: bottom;
-}
-
-.competitor-head span {
-  display: block;
-}
-
-.competitor-sublabel {
-  font-family: 'Manrope', system-ui, sans-serif;
-  font-size: 0.82rem;
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: normal;
-  color: var(--text-muted);
-  margin-top: 4px;
-}
-
-.competitor-head.highlight {
+.differentiator-check {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(34, 211, 238, 0.15);
   color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 2px;
 }
 
-.competitor-head.highlight .competitor-sublabel {
-  color: var(--text-soft);
+.differentiator-claim {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  line-height: 1.4;
 }
 
-.competitor-row {
-  border-bottom: 1px solid var(--white-line);
-}
-
-.competitor-row:last-child {
-  border-bottom: none;
-}
-
-.competitor-cell {
-  padding: 18px 20px;
+.differentiator-detail {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.92rem;
   color: var(--text-soft);
   line-height: 1.55;
-  font-size: 0.95rem;
-  font-weight: 400;
 }
 
-.competitor-cell.feature-label {
-  color: var(--text-main);
-  font-weight: 700;
-}
-
-.competitor-cell.shadowspeak {
-  color: var(--text-main);
-  background: rgba(34, 211, 238, 0.04);
-}
-
-.competitor-summary-row td {
-  padding: 20px;
+.differentiator-summary {
+  margin-top: 28px;
+  padding: 20px 24px;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-main);
   border-top: 1px solid var(--white-line);
   text-align: center;
-}
-
-@media (max-width: 860px) {
-  .competitor-grid table,
-  .competitor-grid thead,
-  .competitor-grid tbody,
-  .competitor-grid tfoot,
-  .competitor-grid tr,
-  .competitor-grid th,
-  .competitor-grid td {
-    display: block;
-  }
-
-  .competitor-head-row {
-    display: none;
-  }
-
-  .competitor-row {
-    padding: 16px 0;
-  }
-
-  .competitor-cell {
-    padding: 8px 20px;
-  }
-
-  .competitor-cell.feature-label {
-    padding-top: 16px;
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-  }
-
-  .competitor-cell::before {
-    display: block;
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-  }
-
-  .competitor-cell:nth-child(2)::before { content: 'ELSA'; }
-  .competitor-cell:nth-child(3)::before { content: 'Duolingo'; }
-  .competitor-cell:nth-child(4)::before { content: 'ShadowSpeak'; }
-
-  .competitor-summary-row td {
-    display: block;
-    text-align: left;
-    padding: 20px;
-  }
 }
 
 /* --- 4-Axis Grid (Solution section) --- */
@@ -1549,6 +1508,11 @@ textarea {
   font-weight: 400;
   line-height: 1.5;
   color: var(--text-muted);
+}
+
+.footer-nav {
+  display: flex;
+  gap: 16px;
 }
 
 .footer-link {

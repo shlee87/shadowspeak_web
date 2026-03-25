@@ -1,17 +1,24 @@
-type ComparisonFeature = {
-  feature: string
-  elsa: string
-  duolingo: string
-  shadowspeak: string
-}
-
-const features: ComparisonFeature[] = [
-  { feature: 'Content source', elsa: 'Scripted exercises', duolingo: 'Gamified lessons', shadowspeak: 'Real podcast episodes' },
-  { feature: 'What it measures', elsa: 'Pronunciation accuracy', duolingo: 'Grammar & vocabulary', shadowspeak: 'Pronunciation, chunking, stress, pitch' },
-  { feature: 'Feedback type', elsa: 'Sound-level scoring', duolingo: 'Right/wrong answers', shadowspeak: 'Speaker-relative 4-axis analysis' },
-  { feature: 'Practice mode', elsa: 'Repeat after prompt', duolingo: 'Tap & type', shadowspeak: 'Shadow along with real speakers' },
-  { feature: 'Real speech coverage', elsa: 'Isolated sounds only', duolingo: 'None', shadowspeak: 'Full native delivery patterns' },
-  { feature: 'Learning model', elsa: 'Drill repetition', duolingo: 'Streak-based gamification', shadowspeak: 'Progressive difficulty from real content' },
+const differentiators = [
+  {
+    claim: 'Real podcasts, not scripted drills',
+    detail: 'Practice with episodes you already listen to \u2014 not artificial exercises.',
+  },
+  {
+    claim: 'Your chosen speaker is the standard',
+    detail: 'No abstract "correct" pronunciation. Your score means how close you are to the speaker you picked.',
+  },
+  {
+    claim: 'See the full picture, not just sounds',
+    detail: 'Stress, chunking, pitch, and pronunciation \u2014 all four axes compared to the speaker.',
+  },
+  {
+    claim: 'A mirror, not a judge',
+    detail: 'We don\u2019t mark you wrong. We show the gap between your delivery and your target.',
+  },
+  {
+    claim: 'Your accent stays yours',
+    detail: 'We never ask you to erase who you are. We help you be understood clearly while sounding like you.',
+  },
 ]
 
 function Comparison() {
@@ -21,39 +28,25 @@ function Comparison() {
         <p className="eyebrow">A different category</p>
         <h2>What other apps miss</h2>
         <p className="section-intro">
-          Most English apps measure pronunciation or grammar. None of them measure delivery — the stress, rhythm, and pitch patterns that decide whether people actually follow what you say.
+          Most English apps measure pronunciation or grammar. None of them measure delivery &mdash; the stress, rhythm, and pitch patterns that decide whether people actually follow what you say.
         </p>
       </div>
 
-      <div className="competitor-grid glass-card">
-        <table>
-          <thead>
-            <tr className="competitor-head-row">
-              <th scope="col" className="competitor-head"></th>
-              <th scope="col" className="competitor-head"><span>ELSA</span><span className="competitor-sublabel">Pronunciation tool</span></th>
-              <th scope="col" className="competitor-head"><span>Duolingo</span><span className="competitor-sublabel">General English</span></th>
-              <th scope="col" className="competitor-head highlight"><span>ShadowSpeak</span><span className="competitor-sublabel">Delivery practice</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            {features.map((row) => (
-              <tr className="competitor-row" key={row.feature}>
-                <th scope="row" className="competitor-cell feature-label">{row.feature}</th>
-                <td className="competitor-cell">{row.elsa}</td>
-                <td className="competitor-cell">{row.duolingo}</td>
-                <td className="competitor-cell shadowspeak">{row.shadowspeak}</td>
-              </tr>
-            ))}
-          </tbody>
-          <tfoot>
-            <tr className="competitor-summary-row">
-              <td colSpan={4}>
-                ShadowSpeak is the only app that measures how you deliver a sentence, not just how you pronounce it.
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
+      <ul className="differentiator-list">
+        {differentiators.map((item) => (
+          <li className="differentiator-item glass-card" key={item.claim}>
+            <span className="differentiator-check" aria-hidden="true">&#10003;</span>
+            <div>
+              <strong className="differentiator-claim">{item.claim}</strong>
+              <span className="differentiator-detail">{item.detail}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <p className="differentiator-summary">
+        ShadowSpeak is the only app that compares your voice to the speaker you chose &mdash; not to a textbook.
+      </p>
     </section>
   )
 }

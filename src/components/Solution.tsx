@@ -25,11 +25,6 @@ function Solution() {
 
         <div className="axes-grid">
           <div className="axis-card glass-card">
-            <span className="axis-icon">🎙</span>
-            <strong>Pronunciation</strong>
-            <span>How accurately you produce each sound</span>
-          </div>
-          <div className="axis-card glass-card">
             <span className="axis-icon">⏸</span>
             <strong>Chunking</strong>
             <span>Where you pause between phrase groups</span>
@@ -44,6 +39,11 @@ function Solution() {
             <strong>Pitch</strong>
             <span>How your voice rises and falls across a sentence</span>
           </div>
+          <div className="axis-card glass-card">
+            <span className="axis-icon">🎙</span>
+            <strong>Pronunciation</strong>
+            <span>How accurately you produce each sound</span>
+          </div>
         </div>
       </div>
 
@@ -57,10 +57,10 @@ function Solution() {
           <div className="difference-bar strong" />
         </div>
         <div className="difference-callout">
-          <p>Direct feedback</p>
-          <strong>Your emphasis lands on the wrong words, your pauses break in the wrong places, and your voice drops too early.</strong>
+          <p>Your gap, visualized</p>
+          <strong>Your emphasis peaks at different points, your pauses land in different places, and your pitch contour follows a different shape.</strong>
           <span>
-            Not vague advice like &quot;sound more natural.&quot; Feedback you can use right away.
+            Not a score that tells you &quot;wrong.&quot; A mirror that shows you exactly how far you are from the speaker you chose.
           </span>
         </div>
       </div>
