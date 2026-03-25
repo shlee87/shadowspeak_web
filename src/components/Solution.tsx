@@ -1,29 +1,22 @@
+import { useReveal } from '../useReveal'
+
 function Solution() {
+  const copyRef = useReveal<HTMLDivElement>()
+  const axesRef = useReveal<HTMLDivElement>(0.1)
+  const visualRef = useReveal<HTMLDivElement>(0.15)
+
   return (
     <section className="wrapper section solution-section">
       <div className="solution-copy">
-        <p className="eyebrow">Why ShadowSpeak exists</p>
-        <h2>You can only fix what you can see</h2>
-        <p className="solution-quote">
-          ShadowSpeak shows you exactly where your delivery is different from the speaker.
-        </p>
-
-        <div className="solution-points">
-          <div>
-            <strong>One line at a time</strong>
-            <span>Work on the exact line you want to sound more natural in.</span>
-          </div>
-          <div>
-            <strong>One gap at a time</strong>
-            <span>See where your stress, chunking, and pitch break away from the speaker.</span>
-          </div>
-          <div>
-            <strong>One better attempt next</strong>
-            <span>Get feedback clear enough to improve your next recording, not vague advice.</span>
-          </div>
+        <div className="reveal" ref={copyRef}>
+          <p className="eyebrow">Why ShadowSpeak exists</p>
+          <h2>You can only fix what you can see</h2>
+          <p className="solution-quote">
+            ShadowSpeak shows you exactly where your delivery is different from the speaker — one line, one gap, one better attempt at a time.
+          </p>
         </div>
 
-        <div className="axes-grid">
+        <div className="axes-grid reveal-stagger" ref={axesRef}>
           <div className="axis-card glass-card">
             <span className="axis-icon">⏸</span>
             <strong>Chunking</strong>
@@ -47,7 +40,7 @@ function Solution() {
         </div>
       </div>
 
-      <div className="solution-visual glass-card">
+      <div className="solution-visual glass-card reveal" ref={visualRef}>
         <div className="difference-row">
           <span className="difference-label">Your current line</span>
           <div className="difference-bar muted" />

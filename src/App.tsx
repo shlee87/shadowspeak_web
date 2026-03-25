@@ -5,9 +5,6 @@ import Footer from './components/Footer'
 function App() {
   return (
     <div className="page-shell">
-      <div className="ambient ambient-left" />
-      <div className="ambient ambient-right" />
-      <div className="grid-overlay" />
       <Header />
       <main>
         <Outlet />

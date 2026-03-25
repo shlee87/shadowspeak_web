@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useReveal } from '../useReveal'
 
 function EarlyAccess() {
   const [email, setEmail] = useState('')
@@ -52,9 +53,11 @@ function EarlyAccess() {
     })()
   }
 
+  const ctaRef = useReveal<HTMLDivElement>()
+
   return (
     <section className="wrapper section cta-section" id="early-access">
-      <div className="cta-shell glass-card">
+      <div className="cta-shell glass-card reveal" ref={ctaRef}>
         <div className="cta-copy">
           <p className="eyebrow">Early access</p>
           <h2>Sound more natural and be understood the first time</h2>

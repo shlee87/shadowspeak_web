@@ -1,3 +1,5 @@
+import { useReveal } from '../useReveal'
+
 type Step = {
   index: string
   title: string
@@ -23,9 +25,12 @@ const steps: Step[] = [
 ]
 
 function HowItWorks() {
+  const headingRef = useReveal<HTMLDivElement>()
+  const gridRef = useReveal<HTMLDivElement>(0.1)
+
   return (
     <section className="wrapper section steps-section">
-      <div className="section-heading compact">
+      <div className="section-heading compact reveal" ref={headingRef}>
         <p className="eyebrow">How it works</p>
         <h2>Three steps from listening to speaking</h2>
           <p className="section-intro">
@@ -33,7 +38,7 @@ function HowItWorks() {
         </p>
       </div>
 
-      <div className="steps-grid">
+      <div className="steps-grid reveal-stagger" ref={gridRef}>
         {steps.map((step) => (
           <article key={step.index} className="step-card glass-card">
             <span className="step-index">{step.index}</span>

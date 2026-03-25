@@ -1,7 +1,12 @@
+import { useReveal } from '../useReveal'
+
 function Problem() {
+  const headingRef = useReveal<HTMLDivElement>()
+  const gridRef = useReveal<HTMLDivElement>(0.1)
+
   return (
     <section className="wrapper section problem-section">
-      <div className="section-heading">
+      <div className="section-heading reveal" ref={headingRef}>
         <p className="eyebrow">The friction you already know</p>
         <h2>You speak English every day. People still ask you to repeat.</h2>
         <p className="section-intro">
@@ -9,7 +14,7 @@ function Problem() {
         </p>
       </div>
 
-      <div className="problem-grid">
+      <div className="problem-grid reveal-stagger" ref={gridRef}>
         <article className="problem-card glass-card intense">
           <span className="problem-index">01</span>
           <h3>The gap you can hear but not fix</h3>
@@ -29,14 +34,6 @@ function Problem() {
 
         <article className="problem-card glass-card">
           <span className="problem-index">03</span>
-          <h3>When you heard the words but still missed the meaning</h3>
-          <p>
-            People talk fast and skip context, so you may understand every word but still not know what the sentence really means.
-          </p>
-        </article>
-
-        <article className="problem-card glass-card">
-          <span className="problem-index">04</span>
           <h3>Podcasts are great input. But input alone does not fix output.</h3>
           <p>
             You can listen to hundreds of hours and still not close the gap between how you speak and how they speak.

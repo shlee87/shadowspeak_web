@@ -51,11 +51,11 @@ function Hero() {
                 </div>
               </div>
 
-              <svg viewBox="0 0 500 220" className="pitch-svg" aria-hidden="true">
+              <svg viewBox="0 0 500 220" className="pitch-svg pitch-animate" aria-hidden="true">
                 <defs>
                   <linearGradient id="referenceLine" x1="0%" x2="100%" y1="0%" y2="0%">
-                    <stop offset="0%" stopColor="#22D3EE" />
-                    <stop offset="100%" stopColor="#7DD3FC" />
+                    <stop offset="0%" stopColor="#D97706" />
+                    <stop offset="100%" stopColor="#F59E0B" />
                   </linearGradient>
                   <linearGradient id="userLine" x1="0%" x2="100%" y1="0%" y2="0%">
                     <stop offset="0%" stopColor="#FB7185" />
