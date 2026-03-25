@@ -29,7 +29,7 @@ function HowItWorks() {
   const gridRef = useReveal<HTMLDivElement>(0.1)
 
   return (
-    <section className="wrapper section steps-section">
+    <section className="wrapper section steps-section" id="how-it-works">
       <div className="section-heading compact reveal" ref={headingRef}>
         <p className="eyebrow">How it works</p>
         <h2>Three steps from listening to speaking</h2>
@@ -38,15 +38,17 @@ function HowItWorks() {
         </p>
       </div>
 
-      <div className="steps-grid reveal-stagger" ref={gridRef}>
+      <ol className="steps-list reveal-stagger" ref={gridRef}>
         {steps.map((step) => (
-          <article key={step.index} className="step-card glass-card">
+          <li key={step.index} className="step-item">
             <span className="step-index">{step.index}</span>
-            <h3>{step.title}</h3>
-            <p>{step.copy}</p>
-          </article>
+            <div className="step-content">
+              <h3>{step.title}</h3>
+              <p>{step.copy}</p>
+            </div>
+          </li>
         ))}
-      </div>
+      </ol>
     </section>
   )
 }

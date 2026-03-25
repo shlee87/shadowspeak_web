@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     question: 'Is this a pronunciation app?',
-    answer: 'No. Pronunciation is only one of four axes we measure. Stress, chunking, and pitch account for over 80% of how well listeners understand you — and those are the areas most apps ignore.',
+    answer: 'No. Pronunciation is only one of four axes we measure. Research shows stress, pausing, and pitch predict comprehensibility more strongly than pronunciation accuracy — yet those are the areas most apps ignore.',
   },
   {
     question: 'Do I need to lose my accent?',
@@ -24,20 +24,20 @@ function Faq() {
   const listRef = useReveal<HTMLDivElement>(0.1)
 
   return (
-    <section className="wrapper section faq-section">
+    <section className="wrapper section faq-section" id="faq">
       <div className="section-heading compact reveal" ref={headingRef}>
         <p className="eyebrow">Common questions</p>
         <h2>Before you sign up</h2>
       </div>
 
-      <dl className="faq-list reveal-stagger" ref={listRef}>
+      <div className="faq-list reveal-stagger" ref={listRef}>
         {faqs.map((faq) => (
-          <div className="faq-item glass-card" key={faq.question}>
-            <dt className="faq-question">{faq.question}</dt>
-            <dd className="faq-answer">{faq.answer}</dd>
-          </div>
+          <details className="faq-item" key={faq.question}>
+            <summary className="faq-question">{faq.question}</summary>
+            <p className="faq-answer">{faq.answer}</p>
+          </details>
         ))}
-      </dl>
+      </div>
     </section>
   )
 }

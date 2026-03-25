@@ -5,8 +5,9 @@ import Footer from './components/Footer'
 function App() {
   return (
     <div className="page-shell">
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <Header />
-      <main>
+      <main id="main-content">
         <Outlet />
       </main>
       <Footer />

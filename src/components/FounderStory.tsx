@@ -1,27 +1,26 @@
 import { useReveal } from '../useReveal'
 
 function FounderStory() {
-  const sectionRef = useReveal<HTMLDivElement>()
+  const sectionRef = useReveal<HTMLElement>()
 
   return (
-    <section className="wrapper section founder-section">
-      <div className="founder-shell glass-card reveal" ref={sectionRef}>
-        <div className="founder-content">
-          <p className="eyebrow">Why I built this</p>
-          <h2 className="founder-headline">
+    <section className="founder-section reveal" ref={sectionRef}>
+      <div className="wrapper founder-inner">
+        <blockquote className="founder-quote">
+          <p className="founder-headline">
             &ldquo;I moved to the US at 30. My grammar was perfect. After 8 years, people still asked me to repeat myself.&rdquo;
-          </h2>
-          <div className="founder-body">
-            <p>
-              I tried every pronunciation app and YouTube course available. They graded my sounds, but people still couldn&apos;t follow me. The problem was never pronunciation — it was <strong>delivery</strong>: the stress, rhythm, and pitch patterns that native speakers use without thinking.
-            </p>
-            <p>
-              Linguistics research confirmed it. Sound errors cause only about 16% of misunderstandings. The other 84% comes from stress, chunking, and pitch — elements no app was measuring.
-            </p>
-            <p>
-              Podcasts felt closest to what I needed. Real people, real speech, topics I cared about. But they weren&apos;t built for practice. So I built the tool that was missing.
-            </p>
-          </div>
+          </p>
+        </blockquote>
+        <div className="founder-body">
+          <p>
+            I tried every pronunciation app and YouTube course available. They graded my sounds, but people still couldn&apos;t follow me. The problem was never pronunciation — it was <strong>delivery</strong>: the stress, rhythm, and pitch patterns that native speakers use without thinking.
+          </p>
+          <p>
+            Linguistics research confirmed it. Studies show that stress, pausing, and pitch predict comprehensibility more strongly than pronunciation accuracy — accounting for half of how listeners judge whether you&apos;re easy to understand. No app was measuring these.
+          </p>
+          <p>
+            Podcasts felt closest to what I needed. Real people, real speech, topics I cared about. But they weren&apos;t built for practice. So I built the tool that was missing.
+          </p>
           <p className="founder-sign">
             — Seonghoon, founder of ShadowSpeak
           </p>

@@ -16,31 +16,30 @@ function Solution() {
           </p>
         </div>
 
-        <div className="axes-grid reveal-stagger" ref={axesRef}>
-          <div className="axis-card glass-card">
-            <span className="axis-icon">⏸</span>
-            <strong>Chunking</strong>
-            <span>Where you pause between phrase groups</span>
-          </div>
-          <div className="axis-card glass-card">
-            <span className="axis-icon">🔊</span>
-            <strong>Stress</strong>
-            <span>Which syllables and words you emphasize</span>
-          </div>
-          <div className="axis-card glass-card">
-            <span className="axis-icon">〰️</span>
-            <strong>Pitch</strong>
-            <span>How your voice rises and falls across a sentence</span>
-          </div>
-          <div className="axis-card glass-card">
-            <span className="axis-icon">🎙</span>
-            <strong>Pronunciation</strong>
-            <span>How accurately you produce each sound</span>
-          </div>
+        <div className="axes-strip reveal" ref={axesRef}>
+          <p className="axes-label">Four axes we measure:</p>
+          <dl className="axes-grid">
+            <div className="axis-item">
+              <dt className="axis-tag">Chunking</dt>
+              <dd className="axis-def">Where you pause between phrases</dd>
+            </div>
+            <div className="axis-item">
+              <dt className="axis-tag">Stress</dt>
+              <dd className="axis-def">Which words you emphasize</dd>
+            </div>
+            <div className="axis-item">
+              <dt className="axis-tag">Pitch</dt>
+              <dd className="axis-def">How your voice rises and falls</dd>
+            </div>
+            <div className="axis-item">
+              <dt className="axis-tag">Pronunciation</dt>
+              <dd className="axis-def">How closely sounds match</dd>
+            </div>
+          </dl>
         </div>
       </div>
 
-      <div className="solution-visual glass-card reveal" ref={visualRef}>
+      <div className="solution-visual surface-card reveal" ref={visualRef}>
         <div className="difference-row">
           <span className="difference-label">Your current line</span>
           <div className="difference-bar muted" />
@@ -51,9 +50,9 @@ function Solution() {
         </div>
         <div className="difference-callout">
           <p>Your gap, visualized</p>
-          <strong>Your emphasis peaks at different points, your pauses land in different places, and your pitch contour follows a different shape.</strong>
+          <strong>Different stress. Different pauses. Different pitch shape.</strong>
           <span>
-            Not a score that tells you &quot;wrong.&quot; A mirror that shows you exactly how far you are from the speaker you chose.
+            Not a score that says &quot;wrong&quot; — a mirror that shows exactly where you differ from the speaker you chose.
           </span>
         </div>
       </div>

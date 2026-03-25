@@ -1,5 +1,7 @@
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { useReveal } from '../useReveal'
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 function EarlyAccess() {
   const [email, setEmail] = useState('')
@@ -8,13 +10,24 @@ function EarlyAccess() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
   const [wasUpdated, setWasUpdated] = useState(false)
+  const [emailTouched, setEmailTouched] = useState(false)
 
-  const isValid = useMemo(() => {
-    return email.includes('@')
+  const isValid = useMemo(() => EMAIL_RE.test(email), [email])
+
+  const emailHint = useMemo(() => {
+    if (!emailTouched || email.length === 0) return null
+    if (!email.includes('@')) return 'Add an @ to finish your email address.'
+    if (!EMAIL_RE.test(email)) return 'This doesn\u2019t look like a complete email.'
+    return null
+  }, [email, emailTouched])
+
+  const handleEmailBlur = useCallback(() => {
+    if (email.length > 0) setEmailTouched(true)
   }, [email])
 
   const onSubmit: React.ComponentProps<'form'>['onSubmit'] = (event) => {
     event.preventDefault()
+    setEmailTouched(true)
     if (!isValid || isSubmitting) return
 
     void (async () => {
@@ -35,7 +48,13 @@ function EarlyAccess() {
         const payload = (await response.json()) as { error?: string, updated?: boolean }
 
         if (!response.ok) {
-          setSubmitError(payload.error ?? 'Something went wrong. Please try again.')
+          if (response.status === 400) {
+            setSubmitError(payload.error ?? 'Check your email and try again.')
+          } else if (response.status === 429) {
+            setSubmitError('Too many requests. Wait a moment and try again.')
+          } else {
+            setSubmitError(payload.error ?? 'Something went wrong on our end. Please try again.')
+          }
           return
         }
 
@@ -45,8 +64,9 @@ function EarlyAccess() {
         }
         setEmail('')
         setPodcast('')
+        setEmailTouched(false)
       } catch {
-        setSubmitError('Something went wrong. Please try again.')
+        setSubmitError('Could not connect. Check your internet and try again.')
       } finally {
         setIsSubmitting(false)
       }
@@ -57,7 +77,7 @@ function EarlyAccess() {
 
   return (
     <section className="wrapper section cta-section" id="early-access">
-      <div className="cta-shell glass-card reveal" ref={ctaRef}>
+      <div className="cta-shell wrapper reveal" ref={ctaRef}>
         <div className="cta-copy">
           <p className="eyebrow">Early access</p>
           <h2>Sound more natural and be understood the first time</h2>
@@ -69,10 +89,10 @@ function EarlyAccess() {
         {submitted ? (
           <div className="success-state">
             <div className="success-icon">&#10003;</div>
-            <h3>{wasUpdated ? 'Preference updated' : 'You are in'}</h3>
+            <h3>{wasUpdated ? 'Preference updated' : 'You\u2019re on the list'}</h3>
             <p>{wasUpdated
               ? 'Already registered — we updated your podcast preference.'
-              : 'We will reach out when your spot is ready. Your podcast choice helps us prioritize.'}</p>
+              : 'We\u2019ll email you when your spot opens. Check your inbox for a confirmation.'}</p>
           </div>
         ) : (
           <form className="signup-form" onSubmit={onSubmit}>
@@ -83,33 +103,49 @@ function EarlyAccess() {
                 placeholder="you@example.com"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
+                onBlur={handleEmailBlur}
+                aria-invalid={emailHint ? true : undefined}
+                aria-describedby={emailHint ? 'email-hint' : undefined}
               />
+              {emailHint && (
+                <p className="form-hint form-error" id="email-hint">{emailHint}</p>
+              )}
             </label>
 
             <label>
-              <span>What podcast do you listen to most? <span className="optional-label">(optional)</span></span>
+              <span>Favorite podcast <span className="optional-label">(optional)</span></span>
               <textarea
-                placeholder="For example: Acquired, The Daily, Pivot, All-In Podcast"
+                placeholder="e.g. Acquired, The Daily, Pivot, All-In Podcast"
                 value={podcast}
                 onChange={(event) => setPodcast(event.target.value)}
                 rows={2}
+                maxLength={500}
               />
-              <p className="field-benefit">We&apos;ll prioritize onboarding your content first.</p>
+              <p className="field-benefit">We&apos;ll onboard your content first.</p>
             </label>
 
-            <button className="primary-button" type="submit" disabled={!isValid}>
-              {isSubmitting ? 'Sending...' : 'Join early access'}
+            <button className="primary-button" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? (
+                <>
+                  <span className="spinner" aria-hidden="true" />
+                  Sending...
+                </>
+              ) : (
+                'Join early access'
+              )}
             </button>
 
-            <p className="form-hint">
-              {submitError ?? 'Share your email to get early access.'}
-            </p>
+            {submitError && (
+              <p className="form-hint form-error" role="alert">
+                {submitError}
+              </p>
+            )}
           </form>
         )}
 
         <div className="social-proof">
           <p className="efficacy-line">
-            Most users reach a 0.85+ speaker match within 3 attempts.
+            Free during early access. Limited spots.
           </p>
         </div>
       </div>

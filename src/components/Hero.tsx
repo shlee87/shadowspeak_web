@@ -22,6 +22,7 @@ function Hero() {
       </div>
 
       <div className="hero-panel">
+        <p className="device-caption">This is what practice looks like</p>
         <div className="device-frame">
           <div className="device-bar">
             <span>9:41</span>

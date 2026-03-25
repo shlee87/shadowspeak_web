@@ -28,7 +28,7 @@ const mdxComponents = {
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => <h3 className="blog-h3" {...props} />,
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => <p className="blog-p" {...props} />,
   table: (props: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="comparison-table glass-card"><table {...props} /></div>
+    <div className="comparison-table surface-card"><table {...props} /></div>
   ),
   th: (props: React.HTMLAttributes<HTMLTableCellElement>) => <th scope="col" {...props} />,
   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => <a className="blog-link" {...props} />,

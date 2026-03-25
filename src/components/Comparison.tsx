@@ -34,7 +34,7 @@ function Comparison() {
 
       <ul className="differentiator-list">
         {differentiators.map((item) => (
-          <li className="differentiator-item glass-card" key={item.claim}>
+          <li className="differentiator-item surface-card" key={item.claim}>
             <span className="differentiator-check" aria-hidden="true">&#10003;</span>
             <div>
               <strong className="differentiator-claim">{item.claim}</strong>

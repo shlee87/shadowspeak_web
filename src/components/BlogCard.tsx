@@ -10,7 +10,7 @@ type BlogCardProps = {
 
 function BlogCard({ title, description, date, readTime, slug }: BlogCardProps) {
   return (
-    <Link to={`/blog/${slug}`} className="glass-card blog-card">
+    <Link to={`/blog/${slug}`} className="surface-card blog-card">
       <h2 className="blog-card-title">{title}</h2>
       <p className="blog-card-excerpt">{description}</p>
       <div className="blog-card-meta">
